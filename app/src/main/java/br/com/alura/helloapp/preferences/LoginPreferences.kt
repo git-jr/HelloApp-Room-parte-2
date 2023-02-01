@@ -10,7 +10,5 @@ import androidx.datastore.preferences.preferencesDataStore
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "login")
 
 object PreferencesKey {
-    val SENHA = stringPreferencesKey("senha")
-    val USUARIO = stringPreferencesKey("usuario")
     val LOGADO = booleanPreferencesKey("logado")
 }
