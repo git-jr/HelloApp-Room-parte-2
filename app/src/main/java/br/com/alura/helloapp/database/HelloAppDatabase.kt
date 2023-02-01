@@ -8,10 +8,11 @@ import br.com.alura.helloapp.database.converters.*
 
 @Database(
     entities = [Contato::class, Usuario::class],
-    version = 4,
+    version = 5,
     autoMigrations = [
         AutoMigration(from = 2, to = 3),
         AutoMigration(from = 3, to = 4, Migration3To4::class),
+        AutoMigration(from = 4, to = 5)
     ]
 )
 @TypeConverters(Converters::class)
