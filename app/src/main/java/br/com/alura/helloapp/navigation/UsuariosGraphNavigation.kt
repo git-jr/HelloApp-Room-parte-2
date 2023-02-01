@@ -47,6 +47,7 @@ fun NavGraphBuilder.usuariosGraph(
                     },
                     onClickListaContatosPorUsuario = { novoUsuario ->
                         coroutineScope.launch {
+                            viewModel.alteraUsuarioLogado(novoUsuario)
                             onNavegaParaHome()
                         }
                     },

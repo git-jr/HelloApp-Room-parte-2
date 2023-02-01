@@ -36,14 +36,14 @@ class ListaContatosViewModel @Inject constructor(
             viewModelScope.launch {
                 dataStore.data.collect {
                     value = value.copy(
-                        idUsuario = it[PreferencesKey.USUARIO_ATUAL]
+                        usuarioAtual = it[PreferencesKey.USUARIO_ATUAL]
                     )
                 }
             }
 
             viewModelScope.launch {
                 val contatos =
-                    _uiState.value.idUsuario?.let { contatoDao.buscaTodosPeloUsuario(it) }
+                    _uiState.value.usuarioAtual?.let { contatoDao.buscaTodosPeloUsuario(it) }
                 contatos?.collect { contatosBuscados ->
                     value = value.copy(
                         contatos = contatosBuscados

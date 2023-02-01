@@ -32,9 +32,9 @@ fun NavGraphBuilder.homeGraph(
                     onNavegaParaFormularioContato()
                 },
                 onClickListaUsuarios = {
-                    // state.usuarioAtual?.let { usuarioAtual ->
-                        onNavegaParaDialgoUsuarios("usuarioAtual")
-                    // }
+                    state.usuarioAtual?.let { usuarioAtual ->
+                        onNavegaParaDialgoUsuarios(usuarioAtual)
+                    }
                 },
             )
         }
