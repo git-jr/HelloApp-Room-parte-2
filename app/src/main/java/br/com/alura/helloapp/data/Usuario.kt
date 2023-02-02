@@ -10,3 +10,9 @@ data class Usuario(
     val senha: String?,
     val nome: String?
 )
+
+data class UsuarioPOJO(
+    @PrimaryKey
+    val idUsuario: String = "",
+    val senha: String?,
+)
