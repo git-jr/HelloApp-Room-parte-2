@@ -30,10 +30,12 @@ fun ListaContatosTela(
     onClickListaUsuarios: () -> Unit = {},
     onClickAbreDetalhes: (Long) -> Unit = {},
     onClickAbreCadastro: () -> Unit = {},
+    onClickBuscaContatos: () -> Unit = {}
 ) {
     Scaffold(topBar = {
         AppBarListaContatos(
             onClickListaUsuarios = onClickListaUsuarios,
+            onClickBuscaContatos = onClickBuscaContatos
         )
     }, floatingActionButton = {
         FloatingActionButton(
@@ -57,12 +59,12 @@ fun ListaContatosTela(
 }
 
 @Composable
-fun AppBarListaContatos(onClickListaUsuarios: () -> Unit) {
+fun AppBarListaContatos(onClickListaUsuarios: () -> Unit, onClickBuscaContatos: () -> Unit) {
     TopAppBar(
         title = { Text(text = stringResource(id = R.string.nome_do_app)) },
         actions = {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                IconButton(onClick = {}) {
+                IconButton(onClick = onClickBuscaContatos) {
                     Icon(
                         Icons.Default.Search, contentDescription = stringResource(R.string.buscar)
                     )

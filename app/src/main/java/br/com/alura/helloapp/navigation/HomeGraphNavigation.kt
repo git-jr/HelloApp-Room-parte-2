@@ -14,6 +14,7 @@ fun NavGraphBuilder.homeGraph(
     onNavegaParaDetalhes: (Long) -> Unit,
     onNavegaParaFormularioContato: () -> Unit,
     onNavegaParaDialgoUsuarios: (String) -> Unit,
+    onNavegaParaBuscaContatos: () -> Unit
 ) {
     navigation(
         startDestination = DestinosHelloApp.ListaContatos.rota,
@@ -36,6 +37,7 @@ fun NavGraphBuilder.homeGraph(
                         onNavegaParaDialgoUsuarios(usuarioAtual)
                     }
                 },
+                onClickBuscaContatos = onNavegaParaBuscaContatos
             )
         }
     }

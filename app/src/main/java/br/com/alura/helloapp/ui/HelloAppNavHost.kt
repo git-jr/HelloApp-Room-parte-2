@@ -46,6 +46,9 @@ fun HelloAppNavHost(
             onNavegaParaDialgoUsuarios = { idUsuario ->
                 navController.navegaParaDialgoUsuarios(idUsuario)
             },
+            onNavegaParaBuscaContatos = {
+                navController.navegaParaBuscaContatos()
+            }
         )
         formularioContatoGraph(
             onVolta = {
@@ -75,6 +78,14 @@ fun HelloAppNavHost(
             },
             onNavegaParaFormularioUsuario = { idUsuario ->
                 navController.navegaParaFormularioUsuario(idUsuario)
+            },
+        )
+        buscaContatosGraph(
+            onVolta = {
+                navController.popBackStack()
+            },
+            onClickNavegaParaDetalhesContato = { idContato ->
+                navController.navegaParaDetalhes(idContato)
             },
         )
     }
@@ -123,6 +134,10 @@ fun NavHostController.navegaParaHome() {
 
 fun NavHostController.navegaParaFormlarioLogin() {
     navigate(DestinosHelloApp.FormularioLogin.rota)
+}
+
+fun NavHostController.navegaParaBuscaContatos() {
+    navigate(DestinosHelloApp.BuscaContatos.rota)
 }
 
 fun NavHostController.navegaParaGerenciaUsuarios() {
