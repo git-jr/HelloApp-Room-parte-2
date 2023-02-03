@@ -24,4 +24,7 @@ interface ContatoDao {
 
     @Query("SELECT * FROM Contato WHERE idUsuario = :idUsuario")
     fun buscaTodosPeloUsuario(idUsuario: String): Flow<List<Contato>>
+
+    @Query("SELECT * FROM Contato WHERE idUsuario = :idUsuario AND (nome LIKE :valorBusca||'%' OR sobrenome LIKE :valorBusca||'%')")
+    fun buscaPorValorEPeloUsuario(idUsuario: String?, valorBusca: String): Flow<List<Contato>>
 }

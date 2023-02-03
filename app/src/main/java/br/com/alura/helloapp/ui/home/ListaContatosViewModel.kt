@@ -26,9 +26,7 @@ class ListaContatosViewModel @Inject constructor(
         get() = _uiState.asStateFlow()
 
     init {
-
         buscaContatos()
-
     }
 
     private fun buscaContatos() {
