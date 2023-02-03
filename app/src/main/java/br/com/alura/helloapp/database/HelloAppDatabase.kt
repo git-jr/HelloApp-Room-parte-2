@@ -1,7 +1,6 @@
 package br.com.alura.helloapp.database
 
 import androidx.room.*
-import androidx.room.migration.AutoMigrationSpec
 import br.com.alura.helloapp.data.Contato
 import br.com.alura.helloapp.data.Usuario
 import br.com.alura.helloapp.database.converters.*
@@ -20,10 +19,3 @@ abstract class HelloAppDatabase : RoomDatabase() {
     abstract fun contatoDao(): ContatoDao
     abstract fun usuarioDao(): UsuarioDao
 }
-
-@RenameColumn(
-    tableName = "Usuario",
-    fromColumnName = "nomeDeUsuario",
-    toColumnName = "idUsuario"
-)
-class Migration3To4 : AutoMigrationSpec

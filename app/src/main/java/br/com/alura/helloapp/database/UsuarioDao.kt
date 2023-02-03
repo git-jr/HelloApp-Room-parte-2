@@ -20,6 +20,6 @@ interface UsuarioDao {
     suspend fun atualiza(usuario: UsuarioPOJO)
 
     @Delete
-    suspend fun apaga(usuario: Usuario)
+    suspend fun deleta(usuario: Usuario)
 
 }
