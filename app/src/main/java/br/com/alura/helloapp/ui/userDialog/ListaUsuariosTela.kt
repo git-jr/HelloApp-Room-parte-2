@@ -126,7 +126,9 @@ fun CaixaDialogoContasUsuario(
                         .padding(horizontal = 16.dp)
                 ) {
                     items(state.outrasContas) {
-                        UsuarioItem(it)
+                        UsuarioItem(it){ usuarioSelecionado ->
+                            onClickListaContatosPorUsuario(usuarioSelecionado)
+                        }
                     }
                     item {
                         ItensAcaoEmConta(
@@ -203,12 +205,13 @@ private fun ItensAcaoEmConta(
 @Composable
 fun UsuarioItem(
     usuario: Usuario,
-    onClickPerfiUsuario: (nomeUsuario: String) -> Unit = {}
+    onClickPerfilUsuario: (nomeUsuario: String) -> Unit = {}
 ) {
     Row(
         Modifier
             .padding(vertical = 12.dp)
             .clickable {
+                onClickPerfilUsuario(usuario.idUsuario)
             }
     ) {
         AsyncImagePerfil(
