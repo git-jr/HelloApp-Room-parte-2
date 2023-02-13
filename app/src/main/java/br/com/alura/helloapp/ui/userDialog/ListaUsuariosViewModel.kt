@@ -5,18 +5,18 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.alura.helloapp.database.UsuarioDao
 import br.com.alura.helloapp.util.ID_USUARIO_ATUAL
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class ListaUsuariosViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    private val dataStore: DataStore<Preferences>
+    private val dataStore: DataStore<Preferences>,
+    private val usuarioDao: UsuarioDao
 ) : ViewModel() {
 
     private val usuarioAtual = savedStateHandle.get<String>(ID_USUARIO_ATUAL)
@@ -32,5 +32,19 @@ class ListaUsuariosViewModel @Inject constructor(
     }
 
     private suspend fun carregaDados() {
+        usuarioAtual?.let {
+            usuarioDao.buscaPorId(usuarioAtual).first()?.let { usuarioBuscado ->
+                _uiState.value = _uiState.value.copy(
+                    nomeDeUsuario = usuarioBuscado.idUsuario,
+                    nome = usuarioBuscado.nome
+                )
+            }
+        }
+
+        usuarioDao.buscaTodos().collect { outrasContas ->
+            _uiState.value = _uiState.value.copy(
+                outrasContas = outrasContas
+            )
+        }
     }
 }
